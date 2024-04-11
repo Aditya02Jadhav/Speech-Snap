@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="header-about">
+        <div>
+            <ul id="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a class="active" href="/about">About</a></li>
+                <li><a href="/faqs">FAQs</a></li>
+                <li><a href="/team">Team</a></li>
+            </ul>
+        </div>
+    </section>
+
+
+    <div class="page-header">
+
+        <h2>Know About Project</h2>
+
+        <p>Read all digram and description about our project</p>
+
+    </div>
+
+
+    <section id="about-head" class="section-p1">
+        <img src="/static/background-images/Sequence-diagram.png">
+        <div>
+            <h2>Secquence Diagram</h2><br>
+            <p>How a user can upload an image to a website and get various outputs based on the image's caption is
+                illustrated here. The website uses an “ImageCaptioningModel” to process the image and generate a caption
+                in English. The website displays the caption to the user. The user can choose to convert the caption to
+                voice speech or another language using “GoogleAPI”. The website plays the voice speech or displays the
+                translated text to the user. The diagram shows the messages exchanged between the user, the website, the
+                “ImageCaptioningModel” and the “GoogleAPI”, as well as the activation and return values of each entity.
+                The diagram helps to understand the flow of events and the interactions involved in the process.</p>
+        </div>
+    </section>
+
+    <section id="about-head" class="section-p1">
+        <img src="/static/background-images/Model-Architecture.jpg">
+        <div>
+            <h2>Mathematical Model</h2><br>
+            <p>Users upload an image, which is then encoded into a format the model understands. The core of the system,
+                a trained image caption model, analyzes the encoded image and generates a corresponding caption. This
+                caption is then decoded back into human-readable text and presented to the user. Additional features
+                like voice playback and translation enhance user experience, making image descriptions readily
+                accessible.</p>
+        </div>
+    </section>
+
+    <section id="about-head" class="section-p1">
+        <img src="/static/background-images/DFDL3.jpg">
+        <div>
+            <h2>DFD Level 3</h2><br>
+            <p>The diagram outlines a process for generating and translating text captions from images. The user starts
+                by browsing an input image from their local device. A deployed model then generates a caption using
+                different methods (Greedy, Beam (3), or Beam (5)). The generated caption can be viewed directly, or it
+                can be sent to a voice generator for voice reading. Additionally, there is a translation function that
+                utilizes the API of Google Translate to provide multi-language translations of the generated text
+                caption.</p>
+        </div>
+    </section>
+
+    <div class="ellipse-parent">
+        <div class="frame-child"></div>
+        <div class="frame-item"></div>
+        <div class="frame-inner"></div>
+        <div class="flower">Flower</div>
+        <div class="feature-extractor">Feature Extractor</div>
+        <div class="inceptionv3-is-a-container">
+          <p class="inceptionv3-is-a">
+            InceptionV3 is a deep convolutional neural network architecture
+            designed for image classification tasks.
+          </p>
+          <p class="inceptionv3-is-a">
+            It is used as a feature extraction mechanism to obtain a compact
+            representation of images.
+          </p>
+        </div>
+        <div class="inception-v3">Inception V3</div>
+        <div class="polan">Polan</div>
+        <div class="petals">Petals</div>
+        <img class="arrow-icon" alt="" src="./public/arrow-5.svg" />
+  
+        <img class="frame-child1" alt="" src="./public/arrow-6.svg" />
+  
+        <img class="frame-child2" alt="" src="./public/arrow-7.svg" />
+  
+        <img
+          class="adf747578d96517b2b8a9c170697e0-icon"
+          alt=""
+          src="./public/54adf747578d96517b2b8a9c170697e0-3@2x.png"
+        />
+      </div>
+  
+
+    <section>
+        <div class="container-f">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Abut us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Comoputer Vision</a></li>
+                        <li><a href="#">NLP</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Peple</h4>
+                    <ul>
+                        <li><a href="#">Amitesh</a></li>
+                        <li><a href="#">Aaditya</a></li>
+                        <li><a href="#">Uddhav</a></li>
+                        <li><a href="#">Sujit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

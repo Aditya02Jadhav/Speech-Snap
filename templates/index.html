@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+
+    <title>Image Captioning</title>
+</head>
+
+
+
+<body>
+    <section id="header">
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/faqs">FAQs</a></li>
+                <li><a href="/team">Team</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="hero">
+        <div class="container">
+            <div class="speech-wrapper">
+                <div class="text-div col-md-6">
+                    <div class="content-top">
+                        <h1>Speech Snap</h1><br>
+                        <h4>A website solution provided to generate descriptive captions to images.</h4><br>
+                    </div>
+
+                    <div class="content-bot">
+                        <a href="#tryit">
+                            <button class="glow-on-hover" type="button" id="cntbtn"><strong>Try It</strong></button>
+                        </a>
+
+                        <p>At Speechsnap, we're revolutionizing the way you interact with your images. Our platform
+                            seamlessly generates captivating captions for your visual content, transforming every
+                            picture into a compelling narrative. Whether you're a professional photographer, a
+                            social media influencer, or simply someone who loves sharing moments, Speechsnap
+                            empowers you to tell your story effortlessly.</p>
+                    </div>
+
+                    <h2 id="capture">
+                        Capture Caption
+                    </h2>
+
+                    <p id="captioncapture">Unveiling Moments: Empowering Your Images with Captivating Captions</p>
+
+                </div>
+
+
+                <div class="image-div col-md-6">
+                    <img src="./static/background-images/slider/imagePrompts.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-01">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <div class="container">
+
+            <div class="slide">
+
+                <div class="item"
+                    style="background-image: url(./static/background-images/slider/3500399969_f54ce5848f.jpg);">
+                    <div class="content">
+                        <div class="name">Beam 5</div>
+                        <div class="des">Group of people are jumping into swimming pool</div>
+                        <button>See More</button>
+                    </div>
+                </div>
+
+                <div class="item"
+                    style="background-image: url(./static/background-images/slider/3428386573_670f5362f0.jpg);">
+                    <div class="content">
+                        <div class="name">Beam 3</div>
+                        <div class="des">Tennis player in white is hitting the tennis ball on the court</div>
+                        <button>See More</button>
+                    </div>
+                </div>
+
+
+                <div class="item"
+                    style="background-image: url(./static/background-images/slider/3639617775_149001232a.jpg);">
+                    <div class="content">
+                        <div class="name">Beam 5</div>
+                        <div class="des">Bride party poses for picture</div>
+                        <button>See More</button>
+                    </div>
+                </div>
+
+
+                <div class="item"
+                    style="background-image: url(./static/background-images/slider/2427558437_3e839056d7.jpg);">
+                    <div class="content">
+                        <div class="name">Greedy</div>
+                        <div class="des">Two dogs are playing in the grass</div>
+                        <button>See More</button>
+                    </div>
+                </div>
+                <div class="item"
+                    style="background-image: url(./static/background-images/slider/3673878924_506c9d767b.jpg);">
+                    <div class="content">
+                        <div class="name">Greedy</div>
+                        <div class="des">
+                            Two ballet dancers are practicing ballet technique
+                        </div>
+                        <button>See More</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="button">
+                <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+                <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script id="slider">
+        let next = document.querySelector('.next')
+        let prev = document.querySelector('.prev')
+
+        next.addEventListener('click', function () {
+            let items = document.querySelectorAll('.item')
+            document.querySelector('.slide').appendChild(items[0])
+        })
+
+        prev.addEventListener('click', function () {
+            let items = document.querySelectorAll('.item')
+            document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+        })
+    </script>
+
+
+    <section id="banner">
+        <h4>Captioning Services</h4>
+        <h2>This is <span>Image Captioning</span>tool</h2>
+        <button class="glow-on-hover" type="button" id="cntbtn">Explore</button>
+
+    </section>
+
+    <section class="section-01">
+        <main class="app">
+
+            <div class="upload">
+                <h1 id="tryit">Image Captioning</h1>
+
+                <form method="POST" action="/" enctype="multipart/form-data">
+                    <input type="file" name="userfile" placeholder="Your Image">
+                    <button class="glow-on-hover" type="submit" id="cntbtn">Submit</button>
+                </form>
+
+            </div>
+
+
+            <div class="results">
+                <div class="resleft">
+                    {% if your_result %}
+
+                    <img src="{{your_result['image']}}" alt="">
+                    <br>
+                </div>
+
+                <div class="resright">
+
+                    <div class="greedy">
+                        <h1>Greedy Caption: <p id="greedy_inp">{{ your_result['greedy_caption'] }}</p>
+                        </h1>
+                        <select name="language" id="greedy-lang-select">
+                            <option value="de">German</option>
+                            <option value="bn">Bengali</option>
+                            <option value="mr">Marathi</option>
+                            <option value="or">Oriya</option>
+                            <option value="gu">Gujrati</option>
+                            <option value="hi">Hindi</option>
+                            <option value="fr">French</option>
+                        </select>
+                        <button onclick="display('greedy_inp', 'greedy-lang-select')">Translate</button>
+
+                        <div id="text-to-speech">
+                            <textarea id="text" style="display: none;">{{ your_result['greedy_caption'] }}</textarea>
+                            <!-- <button id="speak-button">Speak</button> -->
+
+                            <button onclick="speakGreedy()" class="glow-on-hover" type="submit"
+                                id="speak-button-one">Speak</button>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="beam-3">
+
+                        <h1>Beam Search (Beam-3) Caption: <p id="beam3_inp">{{ your_result['beam_3_caption'] }}</p>
+                        </h1>
+                        <select name="language" id="beam3-lang-select">
+                            <option value="de">German</option>
+                            <option value="bn">Bengali</option>
+                            <option value="mr">Marathi</option>
+                            <option value="or">Oriya</option>
+                            <option value="gu">Gujrati</option>
+                            <option value="hi">Hindi</option>
+                            <option value="fr">French</option>
+                        </select>
+                        <button onclick="display('beam3_inp', 'beam3-lang-select')">translate</button>
+
+                        <div id="text-to-speech">
+                            <textarea id="text" style="display: none;">{{ your_result['beam_3_caption'] }}</textarea>
+                            <button onclick="speakBeamThree()" class="glow-on-hover"
+                                id="speak-button-two">Speak</button>
+                        </div>
+
+                    </div>
+
+                    <div class="beam-5">
+
+                        <h1>Beam Search (Beam-5) Caption: <p id="beam5_inp">{{ your_result['beam_5_caption'] }}</p>
+                        </h1>
+
+                        <select name="language" id="beam5-lang-select">
+                            <option value="de">German</option>
+                            <option value="bn">Bengali</option>
+                            <option value="mr">Marathi</option>
+                            <option value="or">Oriya</option>
+                            <option value="gu">Gujrati</option>
+                            <option value="hi">Hindi</option>
+                            <option value="fr">French</option>
+                        </select>
+                        <button onclick="display('beam5_inp', 'beam5-lang-select')">translate</button>
+
+                        <div id="text-to-speech">
+                            <textarea id="text" style="display: none;">{{ your_result['beam_5_caption'] }}</textarea>
+                            <button onclick="speakBeamFive()" class="glow-on-hover" id="speak-button">Speak</button>
+                        </div>
+
+                    </div>
+
+                    <h2>Translated Caption</h2>
+                    <p id="trans-output"></p>
+
+                    {% endif %}
+                </div>
+
+            </div>
+        </main>
+    </section>
+
+    <section>
+        <div class="container-f">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Abut us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Comoputer Vision</a></li>
+                        <li><a href="#">NLP</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>People</h4>
+                    <ul>
+                        <li><a href="#">Amitesh</a></li>
+                        <li><a href="#">Aaditya</a></li>
+                        <li><a href="#">Uddhav</a></li>
+                        <li><a href="#">Sujit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+
+
+        const display = (inputid, translateid) => {
+            const inputText = document.getElementById(inputid).textContent;
+            const outputLanguage = document.getElementById(translateid).value;
+            const outputText = document.getElementById("trans-output")
+            console.log(inputText)
+            console.log(outputLanguage)
+            console.log(outputText)
+            const url =
+                `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${outputLanguage}&dt=t&q=${inputText}`;
+            fetch(url)
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json);
+                    outputText.innerHTML = json[0].map((item) => item[0]).join("");
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+
+        let queuedImagesArray = [],
+            savedForm = document.querySelector("#saved-form"),
+            queuedForm = document.querySelector("#queued-form"),
+            savedDiv = document.querySelector('.saved-div'),
+            queuedDiv = document.querySelector('.queued-div'),
+            inputDiv = document.querySelector('.input-div'),
+            input = document.querySelector('.input-div input'),
+            serverMessage = document.querySelector('.server-message'),
+            deleteImages = [];
+
+        // QUEUED IN FRONTEND
+        function displayQueuedImages() {
+            let images = "";
+            queuedImagesArray.forEach((image, index) => {
+                images += `<div class="image">
+            <img src="${URL.createObjectURL(image)}" alt="image">
+            <span onclick="deleteQueuedImage(${index})">&times;</span>
+        </div>`;
+            })
+            queuedDiv.innerHTML = images;
+        }
+
+        function deleteQueuedImage(index) {
+            queuedImagesArray.splice(index, 1);
+            displayQueuedImages();
+        }
+
+
+        function sendQueuedImagesToServer() {
+            const formData = new FormData(queuedForm);
+
+            queuedImagesArray.forEach((image, index) => {
+                formData.append(`file[${index}]`, image)
+            })
+
+            fetch("upload", {
+                method: "POST",
+                body: formData
+            })
+
+                .then(response => {
+                    if (response.status !== 200) throw Error(response.statusText)
+                    location.reload()
+                })
+
+                .catch(error => {
+                    serverMessage.innerHTML = error
+                    serverMessage.style.cssText = "background-color: #f8d7da; color:#b71c1c"
+                });
+
+        }
+
+        // Get the text area and speak button elements
+        let textArea = document.getElementById("text");
+
+        if (document.getElementById("speak-button")) {
+            let speakButton = document.getElementById("speak-button");
+
+            // Add an event listener to the speak button
+            speakButton.addEventListener("click", function () {
+                // Get the text from the text area
+
+                let text = textArea.value;
+
+                // Create a new SpeechSynthesisUtterance object
+                let utterance = new SpeechSynthesisUtterance();
+
+                // Set the text and voice of the utterance
+                utterance.text = text;
+                utterance.voice = window.speechSynthesis.getVoices()[0];
+
+                // Speak the utterance
+                window.speechSynthesis.speak(utterance);
+            });
+        }
+
+
+        const speakGreedy = () => {
+            let text = document.getElementById('greedy_inp').innerText;
+
+            let utterance = new SpeechSynthesisUtterance();
+
+            // Set the text and voice of the utterance
+            utterance.text = text;
+            utterance.voice = window.speechSynthesis.getVoices()[0];
+
+            // Speak the utterance
+            window.speechSynthesis.speak(utterance);
+
+        }
+
+        const speakBeamThree = () => {
+            let text = document.getElementById('beam3_inp').innerText;
+
+            let utterance = new SpeechSynthesisUtterance();
+
+            // Set the text and voice of the utterance
+            utterance.text = text;
+            utterance.voice = window.speechSynthesis.getVoices()[0];
+
+            // Speak the utterance
+            window.speechSynthesis.speak(utterance);
+
+        }
+
+        const speakBeamFive = () => {
+            let text = document.getElementById('beam5_inp').innerText;
+
+            let utterance = new SpeechSynthesisUtterance();
+
+            // Set the text and voice of the utterance
+            utterance.text = text;
+            utterance.voice = window.speechSynthesis.getVoices()[0];
+
+            // Speak the utterance
+            window.speechSynthesis.speak(utterance);
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
