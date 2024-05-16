@@ -1,5 +1,17 @@
 ## Running the project
 
+## DIRECTLY Install requirements.txt and then run the flask environment/app
+1. Install requirements.txt using following command
+   ```bash
+       pip install -r requirements.txt
+   ```
+2. Run the flask app using following command
+```bash
+python app.py
+```
+
+## OR
+
 To run the project follow the steps mentioned below:
 1. Clone the repository
 2. Open the website folder in vs code
@@ -8,6 +20,7 @@ To run the project follow the steps mentioned below:
 5. Install dependencies like flask, tensorflow, numpy, matplotlib, pandas etc (if you added any other dependencies) in this environment.
 6. Activate the virtual environment
 7. Run the flask app/app.py file in the terminal outside the virtual environment
+
 
 
 
@@ -37,9 +50,3 @@ Run the flask app using following command
 ```bash
 python app.py
 ```
-
-
-## Documentation
-
-[Documentation](https://linktodocumentation)
-
