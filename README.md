@@ -50,3 +50,11 @@ Run the flask app using following command
 ```bash
 python app.py
 ```
+
+## Outputs on Website
+
+<img src="Web/Screenshot 2024-06-24 104849.png">
+
+<img src="Web/Screenshot 2024-06-24 104945.png">
+
+<img src="Web/Screenshot 2024-06-24 105037.png">
