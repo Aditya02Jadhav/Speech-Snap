@@ -1,6 +1,6 @@
 ## Running the project
 
-## DIRECTLY Install requirements.txt and then run the flask environment/app
+## Install directly? Exceute: install requirements.txt and then run the flask environment/app
 1. Install requirements.txt using following command
 ```bash
 pip install -r requirements.txt
