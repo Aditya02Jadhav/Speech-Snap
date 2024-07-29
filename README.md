@@ -36,7 +36,7 @@ To activate virtual environment run following script
 
 To Install dependencies run following script for all environments
 ```bash
-import tensorflow.keras as keras
+pip install tensorflow
 pip install matplotlib
 pip install numpy
 ```
